@@ -5,12 +5,12 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # Copy pom.xml and download dependencies (offline mode)
-COPY pom.xml .
+COPY E-Commerce-Backend/pom.xml .
 RUN apt-get update && apt-get install -y maven
 RUN mvn dependency:go-offline
 
 # Copy source code
-COPY src ./src
+COPY E-Commerce-Backend/src ./src
 
 # Package the app
 RUN mvn clean package -DskipTests
